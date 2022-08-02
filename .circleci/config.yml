@@ -29,7 +29,6 @@ commands:
             aws cloudformation delete-stack --stack-name "udapeople-backend-<<parameters.workflow_id>>"
             aws cloudformation delete-stack --stack-name "udapeople-frontend-<<parameters.workflow_id>>"
 
-
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
     parameters:
@@ -44,7 +43,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl --insecure https://kvdb.io/6ERiZWbKmxoTNszivir7ft/migration_<<parameters.workflow_id>>)
+            SUCCESS = $(curl --insecure https://kvdb.io/6ERiZWbKmxoTNszivir7ft/migration_<<parameters.workflow_id>>)
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
