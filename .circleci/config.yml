@@ -215,7 +215,7 @@ jobs:
   configure-infrastructure:
     docker:
       # Docker image here that supports Ansible
-      - image: cimage/base:stable
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - add_ssh_keys:
