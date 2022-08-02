@@ -43,7 +43,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS = $(curl --insecure https://kvdb.io/6ERiZWbKmxoTNszivir7ft/migration_<<parameters.workflow_id>>)
+            SUCCESS = $(curl --insecure https://kvdb.io/CM26z8JyXuSY9XGHgbxGZv/migration_<<parameters.workflow_id>>)
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -290,9 +290,6 @@ jobs:
       # Checkout code from git
       - checkout
 
-      - attach_workspace:
-          at: ~/
-
       - run:
           name: Install dependencies
           command: |
@@ -306,6 +303,9 @@ jobs:
             # Use n version manager to use Node.js v13.8.0
             sudo npm install --global n
             sudo n 13.8.0
+
+      - attach_workspace:
+          at: ~/
       
       - run:
           name: Get backend url
