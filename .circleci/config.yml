@@ -359,14 +359,14 @@ jobs:
   deploy-backend:
     docker:
       # Docker image here that supports Ansible
-      - image: cimg/base:stable
+      - image: python:3.7-alpine3.11
     steps:
       # Checkout code from git
       - checkout
       - install_ansible
       - install_nodejs
       - install_awscli
-      
+
       # Add ssh keys with fingerprint
       - add_ssh_keys:
           fingerprints:
@@ -377,6 +377,13 @@ jobs:
 
       - restore_cache:
           keys: [backend-build]
+
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
+            apk add --update tar
+            apk add --update gzip
 
       - run:
           name: Install dependencies
