@@ -220,19 +220,10 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
-            cd .circleci/ansible
-            cat inventory.txt
             aws ec2 describe-instances \
-            --query 'Reservations[*].Instances[*].PublicIpAddress' \
-            --output text --filter Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7} >> inventory.txt
-            cat inventory.txt
-            # export BACKEND_IP=$(aws ec2 describe-instances \
-            # --query 'Reservations[*].Instances[*].PublicIpAddress' \
-            # --filter Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7} \
-            # --output text
-            # )
-            # echo ${BACKEND_IP}
-            # # Your code here
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filter Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7} >> inventory.txt
+              --output text >> .circleci/ansible/inventory.txt
             
       - persist_to_workspace:
           root: ~/
@@ -390,21 +381,18 @@ jobs:
             npm install
             npm run build
             cd ..
-
       - run:
           name: Backend files
           command: |
             # Zip the directory
             tar -C backend -czvf artifact.tar.gz .
             cp artifact.tar.gz  ~/
-
       - run:
           name: Check if content file exists inventory.txt && artifact.tar.gz file
           command:
             # your code here
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
-
       - run:
           name: Deploy backend
           command: |
