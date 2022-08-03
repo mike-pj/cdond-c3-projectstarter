@@ -17,7 +17,6 @@
     cd ~/backend
     tar -xvzf artifact.tar.gz
     npm install -f
-
 - name: "Executing Node app with PM2"
   shell: |
     cd ~/backend
