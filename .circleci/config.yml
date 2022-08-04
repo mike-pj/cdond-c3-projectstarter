@@ -400,6 +400,9 @@ jobs:
             # your code here
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
+            cat inventory.txt
+            echo "Contents of files folder is -------"
+            ls ~/
       - run:
           name: Deploy backend
           command: |
