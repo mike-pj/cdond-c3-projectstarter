@@ -1,5 +1,4 @@
 ---
-
 - name: "Creates directory for backend"
   file:
     path: ~/backend
@@ -15,18 +14,13 @@
 - name: "Installing Node Dependencies"
   shell: |
     cd ~/backend
-    npm i
-    # tar -xvzf artifact.tar.gz
-    # npm install -f
-
+    tar -xvzf artifact.tar.gz
+    npm install -f
 - name: "Executing Node app with PM2"
   shell: |
     cd ~/backend
-    pm2 stop default
-    pm2 start main.js
-    # pm2 start npm -- start -f
-    # pm2 list
-
+    pm2 start npm -- start -f
+    pm2 list
   register: execute_node
 
 - name: print message
@@ -34,8 +28,6 @@
     msg: "{{ execute_node.stdout_lines }}"
 
 - name: "Configure pm2 to start as service"
-  become: true
   shell: |
-    # sudo su -c "env PATH=$PATH:/usr/local/bin pm2 startup systemd -u ubuntu --hp /home/ubuntu"
-    # pm2 save
-    env PATH=$PATH:/usr/local/bin pm2 startup systemd -u ubuntu --hp /home/ubuntu
+    sudo su -c "env PATH=$PATH:/usr/local/bin pm2 startup systemd -u ubuntu --hp /home/ubuntu"
+    pm2 save
