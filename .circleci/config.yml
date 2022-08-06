@@ -69,7 +69,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl --insecure https://kvdb.io/CM26z8JyXuSY9XGHgbxGZv/migration_<<parameters.workflow_id>>)
+            SUCCESS=$(curl --insecure https://kvdb.io/DGbJw4xWn9b8b8vNiN4gx/migration_<<parameters.workflow_id>>)
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -305,7 +305,7 @@ jobs:
             # Your code here
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-                curl https://kvdb.io/CM26z8JyXuSY9XGHgbxGZv/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                curl https://kvdb.io/DGbJw4xWn9b8b8vNiN4gx/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi      
 
   deploy-frontend:
