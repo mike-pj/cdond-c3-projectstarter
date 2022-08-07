@@ -387,7 +387,7 @@ jobs:
             cp artifact.tar.gz  ~/
       - run:
           name: Check if content file exists inventory.txt && artifact.tar.gz file
-          command:
+          command: |
             # your code here
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
