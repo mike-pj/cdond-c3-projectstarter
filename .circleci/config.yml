@@ -370,7 +370,16 @@ jobs:
 
       - restore_cache:
           keys: [backend-build]
-
+            
+      - run:
+          name: Install dependencies for Ansible
+          command: |
+            # your code here
+            cd backend
+            apk add --update ansible
+            apk add --update tar
+            apk add --update gzip
+            
       - run:
           name: Install dependencies
           command: |
