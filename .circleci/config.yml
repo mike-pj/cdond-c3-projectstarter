@@ -43,7 +43,7 @@ commands:
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
-      # Add parameter here 
+      # Add parameter here Aminu
       workflow_id:
         default: "${CIRCLE_WORKFLOW_ID:0:7}"
         type: string
