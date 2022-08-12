@@ -360,7 +360,7 @@ jobs:
       - install_awscli
       - install_nodejs
       - install_ansible
-      # Add ssh keys with fingerprint
+      # Add ssh keys with fingerprints
       - add_ssh_keys:
           fingerprints:
             - "d9:ab:86:35:55:c6:3c:ae:9d:2f:da:33:95:13:5b:57"
