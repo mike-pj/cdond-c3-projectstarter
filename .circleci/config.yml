@@ -283,10 +283,10 @@ jobs:
     steps:
       # Checkout code from git
       - checkout
-      - awscli
+      - install_awscli
       - restore_cache:
           keys: [scan-backend]
-          
+
       - run:
           name: Run migrations
           command: |
