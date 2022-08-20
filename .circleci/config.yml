@@ -234,7 +234,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      # Docker image here that supports Ansible
+      # Docker image here that will support Ansible
       - image: python:3.7-alpine3.11
     steps:
       - checkout
