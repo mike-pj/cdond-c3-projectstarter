@@ -278,10 +278,9 @@ jobs:
 
   run-migrations:
     docker:
-      # Docker image here that supports NodeJS
+      # Docker image here that will support NodeJS
       - image: cimg/node:13.8.0
     steps:
-      # Checkout code from git
       - checkout
       - install_awscli
       - restore_cache:
