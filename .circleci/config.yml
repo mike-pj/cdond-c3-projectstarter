@@ -279,7 +279,7 @@ jobs:
   run-migrations:
     docker:
       # Use Docker image here that will support NodeJS
-      - image: circleci/node:15.0.1
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - install_awscli
