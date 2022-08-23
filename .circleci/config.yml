@@ -279,7 +279,7 @@ jobs:
   run-migrations:
     docker:
       # Use Docker image here that will support NodeJS
-      - image: circleci/node:16.10
+      - image: cimg/node:13.8.0
     steps:
       - checkout
       - install_awscli
@@ -419,7 +419,6 @@ jobs:
       - checkout
       - install_awscli
       - install_nodejs
-      - install_ansible
       - attach_workspace:
           at: ~/
       - run:
@@ -451,8 +450,8 @@ jobs:
               exit 1
             fi
 
-      # - destroy-environment
-      # - revert-migrations        
+      - destroy-environment
+      - revert-migrations        
 
   cloudfront-update:
     docker:
