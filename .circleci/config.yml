@@ -200,7 +200,7 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-      # Here is where you will add some code to rollback on the failures  
+      # Here's where you will add some code to rollback on failures  
 
   configure-infrastructure:
     docker:
